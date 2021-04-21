@@ -31,7 +31,8 @@ class _HomePageState extends State<HomePage> {
           _scrollController.position.maxScrollExtent) {
         if (_currentPage <= _maxPage) {
           print("Yeni elemanlar geitr");
-          print("Currentpage++");
+          _currentPage++;
+          _viewModel.notifyListeners();
         }
       }
     });
@@ -66,10 +67,11 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> getShows() async {
     print("tvShows getiriliyor");
-    await _viewModel.getPopularTvShows();
-    tvShows = _viewModel.getirilenTvShow.tvShows;
+    await _viewModel.getPopularTvShows(_currentPage);
+    tvShows += _viewModel.getirilenTvShow.tvShows;
     print("Tv Shows getirildi." + tvShows.isEmpty.toString());
     _maxPage = _viewModel.getirilenTvShow.pages;
+    print("Tv Show:" + tvShows.length.toString());
   }
 }
 /*

@@ -4,10 +4,11 @@ import 'package:http/http.dart' as http;
 import 'package:tv_show_app_flutter/models/PopularTvShows.dart';
 
 class PopularTvShowsApiClient {
-  Future<PopularTvShows> getPopularTvShows() async {
+  Future<PopularTvShows> getPopularTvShows(int pageNo) async {
     final http.Client httpClient = http.Client();
-    final url = "https://www.episodate.com/api/most-popular?page=1";
-    final gelenCevap = await httpClient.get(url);
+    final baseUrl = "https://www.episodate.com/api/most-popular?page=";
+    String formattedUrl = baseUrl + pageNo.toString();
+    final gelenCevap = await httpClient.get(formattedUrl);
 
     if (gelenCevap.statusCode != 200) {
       throw Exception("Getirilemedi..");

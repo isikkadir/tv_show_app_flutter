@@ -54,7 +54,7 @@ class TvShow {
   int id;
   String name;
   String permalink;
-  DateTime startDate;
+  String startDate;
   dynamic endDate;
   String country;
   String network;
@@ -65,9 +65,7 @@ class TvShow {
         id: json["id"] == null ? null : json["id"],
         name: json["name"] == null ? null : json["name"],
         permalink: json["permalink"] == null ? null : json["permalink"],
-        startDate: json["start_date"] == null
-            ? null
-            : DateTime.parse(json["start_date"]),
+        startDate: json["start_date"] == null ? null : json["start_date"],
         endDate: json["end_date"],
         country: json["country"] == null ? null : json["country"],
         network: json["network"] == null ? null : json["network"],
@@ -81,9 +79,7 @@ class TvShow {
         "id": id == null ? null : id,
         "name": name == null ? null : name,
         "permalink": permalink == null ? null : permalink,
-        "start_date": startDate == null
-            ? null
-            : "${startDate.year.toString().padLeft(4, '0')}-${startDate.month.toString().padLeft(2, '0')}-${startDate.day.toString().padLeft(2, '0')}",
+        "start_date": startDate == null ? null : startDate,
         "end_date": endDate,
         "country": country == null ? null : country,
         "network": network == null ? null : network,

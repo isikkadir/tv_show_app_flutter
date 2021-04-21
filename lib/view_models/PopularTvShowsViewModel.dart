@@ -17,9 +17,9 @@ class PopularTvShowsViewModel with ChangeNotifier {
     _getirilenTvShow = PopularTvShows();
   }
 
-  Future<PopularTvShows> getPopularTvShows() async {
+  Future<PopularTvShows> getPopularTvShows(int pageNo) async {
     try {
-      _getirilenTvShow = await _repository.getPopularTvShows();
+      _getirilenTvShow = await _repository.getPopularTvShows(pageNo);
     } catch (e) {
       print("Hata çıktı view Model" + e.toString());
     }

@@ -27,12 +27,14 @@ Widget ItemContainer(int index, List<TvShow> tvShows, BuildContext context) {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text(
-                tvShows[index].name,
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 24.0,
-                  fontWeight: FontWeight.bold,
+              Expanded(
+                child: Text(
+                  tvShows[index].name,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 22.0,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
               SizedBox(
@@ -42,7 +44,7 @@ Widget ItemContainer(int index, List<TvShow> tvShows, BuildContext context) {
                 tvShows[index].network + " (" + tvShows[index].country + ")",
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 22.0,
+                  fontSize: 20.0,
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -50,10 +52,10 @@ Widget ItemContainer(int index, List<TvShow> tvShows, BuildContext context) {
                 height: 3,
               ),
               Text(
-                "Started on: " + tvShows[index].startDate.toString(),
+                "Started on: " + tvShows[index].startDate,
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 16.0,
+                  fontSize: 17.0,
                   fontWeight: FontWeight.w300,
                 ),
               ),
@@ -64,14 +66,24 @@ Widget ItemContainer(int index, List<TvShow> tvShows, BuildContext context) {
                 tvShows[index].status,
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 19.0,
+                  fontSize: 18.0,
                   fontWeight: FontWeight.w400,
                 ),
               ),
             ],
           ),
-        )
+        ),
       ],
     ),
   );
 }
+/*String formatDate(DateTime dateTime) {
+    String formattedDate;
+
+    formattedDate = DateFormat('yyyy-MM-dd – kk:mm').format(dateTime);
+    if (formattedDate == null) {
+      return "Unknown";
+    }
+
+    return formattedDate;
+  }*/

@@ -7,7 +7,7 @@ class PopularTvShowsRepository {
   PopularTvShowsApiClient popularTvShowsApiClient =
       locator<PopularTvShowsApiClient>();
 
-  Future<PopularTvShows> getPopularTvShows() async {
-    return await popularTvShowsApiClient.getPopularTvShows();
+  Future<PopularTvShows> getPopularTvShows(int pageNo) async {
+    return await popularTvShowsApiClient.getPopularTvShows(pageNo);
   }
 }
