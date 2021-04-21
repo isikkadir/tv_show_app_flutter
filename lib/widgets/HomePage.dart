@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tv_show_app_flutter/models/PopularTvShows.dart';
 import 'package:tv_show_app_flutter/view_models/PopularTvShowsViewModel.dart';
+import 'package:tv_show_app_flutter/widgets/DetailPage.dart';
 import 'package:tv_show_app_flutter/widgets/ItemContainer.dart';
 
 class HomePage extends StatefulWidget {
@@ -53,7 +54,19 @@ class _HomePageState extends State<HomePage> {
                 controller: _scrollController,
                 itemCount: tvShows.length,
                 itemBuilder: (context, index) {
-                  return ItemContainer(index, tvShows, context);
+                  return InkWell(
+                    onTap: () => {
+                      print("Tıklandı. " + tvShows[index].name),
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => DetailPage(
+                                  tvShows: tvShows[index],
+                                )),
+                      ),
+                    },
+                    child: ItemContainer(index, tvShows, context),
+                  );
                 });
           } else {
             return Center(
@@ -74,6 +87,7 @@ class _HomePageState extends State<HomePage> {
     print("Tv Show:" + tvShows.length.toString());
   }
 }
+
 /*
 * Temporary Tv Show
 * TvShow tempTvShow = TvShow(
